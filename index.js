@@ -1,7 +1,8 @@
 var co = require('co');
-var ip = require('./lib/ip');
-var ddns = require('./lib/ddns');
-var getip = ip.getip;
+
+var getip = require('./lib/ip').getip;
+var updateARecord = require('./lib/ddns').updateARecord;
+
 var current_ip, timeout;
 
 module.exports = function boot(t) {
@@ -14,45 +15,16 @@ module.exports = function boot(t) {
       console.log('%s ip: [%s], not change!', now(), ip);
     } else {
       current_ip = ip;
-      var record = yield ddns.updateARecord(ip);
+      var record = yield updateARecord(ip);
       console.log('%s %s', now(), record.value);
     }
-
-    setTimeout(boot, timeout);
-
   })(function(err){
     if (err) {
       console.error(err.message);
+    } else {
+      setTimeout(boot, timeout);
     }
   });
-  function doDDNS() {
-    getip()
-      .then(function(ip) {
-        if (isValidIP(ip)) {
-          if (current_ip == ip) {
-            console.log('%s ip: [%s], not change!', now(), ip);
-          } else {
-            current_ip = ip;
-            return ddns.updateARecord(ip);
-          }
-        } else {
-          throw new Error('Invalid IP!');
-        }
-      })
-      .then(function(record) {
-        if (record) {
-          console.log('%s %s', now(), record.value);
-        }
-      })
-      .fail(function(err) {
-        console.error('%s %s', now(), err.message);
-      })
-      .fin(function(){
-        setTimeout(doDDNS, timeout);
-      });
-  }
-
-  doDDNS();
 };
 
 function now(){
@@ -63,7 +35,7 @@ function now(){
   var hour = normalize(now.getHours());
   var minute = normalize(now.getMinutes());
   var second = normalize(now.getSeconds());
-  
+
   return [[year, month, day].join('-'), [hour, minute, second].join(':')].join(' ');
 }
 
