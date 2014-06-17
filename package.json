@@ -5,7 +5,8 @@
   "preferGlobal": true,
   "main": "index.js",
   "dependencies": {
-    "co": "^3.0.6",
-    "thunkify": "^2.1.2"
+    "co": "3.0.6",
+    "minimist": "0.1.0",
+    "thunkify": "2.1.2"
   }
 }

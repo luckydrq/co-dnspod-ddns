@@ -1,7 +1,7 @@
 var co = require('co');
-
-var getip = require('./lib/ip').getip;
-var updateARecord = require('./lib/ddns').updateARecord;
+var thunkify = require('thunkify');
+var getip = thunkify(require('./lib/ip').getip);
+var updateARecord = thunkify(require('./lib/ddns').updateARecord);
 
 var current_ip, timeout;
 
@@ -15,7 +15,7 @@ module.exports = function boot(t) {
       console.log('%s ip: [%s], not change!', now(), ip);
     } else {
       current_ip = ip;
-      var record = yield updateARecord(ip);
+      var record = yield updateARecord();
       console.log('%s %s', now(), record.value);
     }
   })(function(err){
