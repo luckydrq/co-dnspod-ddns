@@ -1,3 +1,5 @@
+require('gnode');
+
 var co = require('co');
 var thunkify = require('thunkify');
 var getip = thunkify(require('./lib/ip').getip);

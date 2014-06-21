@@ -1,12 +1,16 @@
 {
   "name": "co-dnspod-ddns",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "luckydrq<drqzju@gmail.com>",
   "preferGlobal": true,
   "main": "index.js",
+  "bin": {
+    "ddns": "bin/cli.js"
+  },
   "dependencies": {
     "co": "3.0.6",
     "minimist": "0.1.0",
-    "thunkify": "2.1.2"
+    "thunkify": "2.1.2",
+    "gnode": "0.0.8"
   }
 }
