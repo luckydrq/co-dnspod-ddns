@@ -3,7 +3,7 @@ co-dnspod-ddns
 
 Generator implemented ddns module for [dnspod](https://www.dnspod.cn) by `co` library
 
-[node](http://nodejs.org) 0.11.9 or higher is required.
+*NOTE: It can be run on any [node](http://nodejs.org) version that doesn't support generator thanks to [gnode](https://github.com/TooTallNate/gnode) and [regenerator](https://github.com/facebook/regenerator), just feel free to install.*
 
 ## Usage
 
