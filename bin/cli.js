@@ -36,5 +36,6 @@ global.domain_name = argv.domain_name;
 var timeout = parseInt(argv.timeout, 10);
 global.timeout = !isNaN(timeout) ? timeout * 1000 : 30000;
 
+require('gnode');
 require('..')(global.timeout);
 

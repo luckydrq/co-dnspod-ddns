@@ -1,6 +1,6 @@
 {
   "name": "co-dnspod-ddns",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "luckydrq<drqzju@gmail.com>",
   "preferGlobal": true,
   "main": "index.js",
