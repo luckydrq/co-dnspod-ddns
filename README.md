@@ -7,5 +7,5 @@ Generator implemented ddns module for [dnspod](https://www.dnspod.cn) by `co` li
 
 ## Usage
 
-See also another [repo](https://github.com/luckydrq/dnspod-ddns2) which use normal feature of nodejs.
+For usage please refer another [repo](https://github.com/luckydrq/dnspod-ddns2) which is the same as this repo which is implemented with `promise` instead of `generator`.
 
